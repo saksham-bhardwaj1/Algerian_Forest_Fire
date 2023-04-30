@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title>FWI Prediction</title>
+	<style>
+		body {
+			background-color: #F5F5F5;
+		}
+		h1 {
+			color: #006400;
+			font-family: Arial, sans-serif;
+			text-align: center;
+			margin-top: 20px;
+		}
+		h2 {
+			color: #006400;
+			font-family: Arial, sans-serif;
+			text-align: center;
+			margin-top: 20px;
+		}
+		form {
+			background-color: #FFFFFF;
+			border: 1px solid #CCCCCC;
+			border-radius: 5px;
+			margin: 20px auto;
+			padding: 20px;
+			text-align: center;
+			width: 350px;
+		}
+		input[type="text"] {
+			border: 1px solid #CCCCCC;
+			border-radius: 3px;
+			font-family: Arial, sans-serif;
+			margin: 10px 0;
+			padding: 10px;
+			width: 100%;
+		}
+		button[type="submit"] {
+			background-color: #006400;
+			border: none;
+			border-radius: 3px;
+			color: #FFFFFF;
+			cursor: pointer;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			margin-top: 20px;
+			padding: 10px;
+			width: 100%;
+		}
+		img {
+			display: block;
+			margin: 20px auto;
+			max-width: 100%;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+	<h1>Forest Fire Prediction</h1>
+	<form action="{{ url_for('predict_datapoint')}}" method="post">
+		<input type="text" name="Temperature" placeholder="Temperature (Celsius)" required="required" /><br>
+		<input type="text" name="RH" placeholder="Relative Humidity (%)" required="required" /><br>
+		<input type="text" name="Ws" placeholder="Wind Speed (km/h)" required="required" /><br>
+		<input type="text" name="Rain" placeholder="Rainfall (mm/m2)" required="required" /><br>
+		<input type="text" name="FFMC" placeholder="Fine Fuel Moisture Code" required="required" /><br>
+		<input type="text" name="DMC" placeholder="Duff Moisture Code" required="required" /><br>
+		<input type="text" name="ISI" placeholder="Initial Spread Index" required="required" /><br>
+		<input type="text" name="Classes" placeholder="Fire Classes (0-1)" required="required" /><br>
+		<input type="text" name="Region" placeholder="Region (0-1)" required="required" /><br>
+		<button type="submit">Predict</button>
+	</form>
+	<h2>
+		The predicted Fire Weather Index is: {{result}}
+	</h2>
+</body>
+</html>
